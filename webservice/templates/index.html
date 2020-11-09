@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Python 웹 서비스 - Flask</title>
+</head>
+<body>
+	<h1>templates/index.html - Flask 테스트</h1>
+	{% if method == 'GET' or not method %}
+	<h3>GET 요청하기 폼</h3>
+	<form action="chat">
+		id : <input type="text" name="id" /><br/>
+		pass : <input type="password" name="pass" /><br/>
+		<input type="hidden" name="uId" value="mmm100" /><br/>
+		<input type="submit" value="대화하기 로그인" />	
+	</form>	
+	<a href="/?method=POST" >POST 방식 폼 보기</a>	
+	{% elif method == 'POST' %}
+	<h3>POST 요청하기 폼</h3>
+	<form action="chat" method="post">
+		id : <input type="text" name="id" /><br/>
+		pass : <input type="password" name="pass" /><br/>
+		<input type="hidden" name="uId" value="mmm100" /><br/>
+		<input type="submit" value="대화하기 로그인" />	
+	</form>	
+</body>
+</html>
