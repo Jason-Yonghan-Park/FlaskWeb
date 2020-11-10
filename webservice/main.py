@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request, jsonify, send_file
 
 # Flask 객체 생성
-app = Flask(__name__)
+app = Flask(__name__, template_folder='D:/FlaskWeb/webservice/templates')
 
 # 각각의 요청을 처리하는 메서드
 # @app.route() -> flask가 제공하는 데코레이터 (spring의 annotation과 역할 비슷)
@@ -57,4 +57,4 @@ if __name__ == '__main__':
     # 실제 웹서비스 시작
     # app.run(host='0.0.0.0', port=9000) -> 실제 운영할 때 사용하면 좋음
     # 개발 시 소스코드 변경되면 바로 웹서버에 갱신하는 옵션(debug)
-    app.run(host='0.0.0.0', port=9000, debug=True)
+    app.run(host='0.0.0.0', port=9000, debug=True, use_debugger=False, use_reloader=False, passthrough_errors=True)
