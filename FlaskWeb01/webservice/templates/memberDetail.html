@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1 { text-align: center; }
+	 table {
+	 	border: 1px solid black;
+	 	border-collapse: collapse;
+	 	margin: 15px auto;
+	 }
+	 tr, th, td {
+	 	border: 1px solid black;
+	 }
+	 th{
+	 	width: 200px;
+	 }
+	 td {
+	 	width: 400px;
+	 }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+$(function(){
+	
+	$("#deleteMember").click(function() {
+		var isOk = window.confirm($(this).attr("data-name") + " 회원을 삭제 하시겠습니까?")
+		if(!isOk) {
+			return false;
+		}
+	});
+	
+});
+</script>
+</head>
+<body>
+<h1>회원 가입 폼</h1>
+<table>
+	<tr>
+		<th>NO : </th>
+		<td>{{ member.getNo() }}</td>
+	</tr>
+	<tr>
+		<th>아이디 : </th>
+		<td>{{ member.getId() }}</td>
+	</tr>
+	<tr>
+		<th>이름 : </th>
+		<td>{{ member.getName() }}</td>
+	</tr>
+	<tr>
+		<th>비밀번호 : </th>
+		<td>{{ member.getPw() }}</td>
+	</tr>
+	<tr>
+		<th>이메일 : </th>
+		<td>{{ member.getEmail() }}</td>
+	</tr>
+	<tr>
+		<th>전화번호 : </th>
+		<td>{{ member.getPhone() }}</td>
+	</tr>
+	<tr>
+		<th>주 소 : </th>
+		<td>{{ member.getAddress1() }}</td>
+	</tr>
+	<tr>
+		<th>가입일 : </th>
+		<td>{{ member.getRegDate().date() }}</td>
+	</tr>
+	<tr>			
+		<!-- 
+			memberDetail 페이지로 넘어 올 때 memberDetail/1 형태로 요청되어
+			넘어 왔기 때문에 아래 a 태그의 href 속성에 "memberList" 로 링크를 설정하면
+			"memberDetail/memberList" 형태로 링크가 설정되기 때문에
+			링크를 설정할 때 주의가 필요하다.
+		-->
+		<th><a href="/memberList">회원 리스트</a></th>
+		<td>
+			<a href="/updateMemberForm/{{ member.getNo() }}">회원 정보 수정</a>&nbsp;&nbsp;
+			<a href="/deleteMember/{{ member.getNo() }}" id="deleteMember" 
+				data-name="{{ member.getName() }}">회원 정보 삭제</a>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

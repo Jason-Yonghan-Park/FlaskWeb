@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>채팅 창</title>
+<style>
+	 h1   { background-color: #ffe0e0; }
+	 div  { padding:10px; }
+	 span { border-radius: 10px; background-color: #ffe0e0; padding:8px; }
+	 .bot { text-align: left; }
+	 .usr { text-align: right; }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+	$(function() { 
+		
+		$("#btnChat").on("click", function() {
+			
+			var txt = $('#txt').val();
+		 	
+			if(txt.length == 0 ) {
+				alert("대화를 입력해 주세요")
+				return;
+			}
+			
+			$.ajax({
+				url : "chatting",
+				type: "post",
+		 		data: {"req_msg": txt},
+		 		//dataType: "json",		 		
+		   		success: function(res) {
+		 			var html = 
+		     			"<div class='usr'>"
+		     		+ 		"<span>" + txt + "</span>"
+		     		+ 		" : 나"
+					+	"</div>";     	
+		     		
+		     		$('#chat').append(html);
+		     		$('#txt').val('').focus();
+		   		},
+		   		error: function(xhr, statusTxt, err) {
+		   			console.log(err);
+		   		}
+			});		   	
+		});
+	});	
+</script>
+<body>
+    <h1>대화하기</h1>
+    <div><a href="/">메인가기</a></div>
+    <div id="chat"></div>
+    <div>
+    	<!-- 로그인 사용자 정보 출력 -->
+    	{% if id == 'admin' %}
+	       	관리자 아이디<br/>
+	       	안녕하세요 admin 님!    	
+	    {% elif id == 'midas' %}
+	    	안녕하세요 midas 님!    	
+	    {% else %}
+	    	모르는 아이디    	
+	    {% endif %}    
+    </div>
+    <div class='usr'>
+    	<input id="txt" size="40">
+    	<button id="btnChat">메시지 전송</button>
+    </div>
+</body>
+</html>

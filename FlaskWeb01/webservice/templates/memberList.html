@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 리스트</title>
+<style>
+	h1 { text-align: center; }
+	 table {
+	 	border: 1px solid black;
+	 	border-collapse: collapse;
+	 	margin: 15px auto;
+	 }
+	 tr, th, td {
+	 	border: 1px solid black;
+	 }
+	 th, td {
+	 	width: 120px;
+	 }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+</script>
+<body>
+    <h1>회원 리스트</h1>
+    <table>
+    <tr>
+    	<th>no</th>
+    	<th>아이디</th>
+    	<th>이름</th>    	
+    	<th>이메일</th>    	
+    	<th>가입일</th>
+    </tr>
+    {% for m in memberList %}
+     <tr>
+     	{# 
+     		여기는 템플릿 페이지에서 파이썬 주석
+     		{{ 출력할 데이터 변수 }}와 같이 데이터를 출력할 수 있음
+     	 #}
+     	<td>{{ m.getNo() }}</td>
+    	<td>{{ m.getId() }}</td>
+    	{# 
+    		main.py 모듈에서 "/getMember/<no>" 와 같이 요청 매핑을 지정했기
+    		때문에 이 패턴에 맞게 파라미터를 지정해야 한다. 그렇지 않으면 404가 발생한다. 
+    	#}
+    	<td><a href="memberDetail/{{ m.getNo() }}">{{ m. getName() }}</a></td>    		
+    	<td>{{ m.getEmail() }}</td>
+    	<!-- 
+    		여기는 html 주석 영역 
+    		datetime.datetime 객체이므로 아래와 같이 메서드를 이용해 날짜 출력 
+    	-->
+    	<td>{{ m.getRegDate().date() }}</td> 
+    </tr>
+    {% endfor %}
+    <tr>
+    	<td colspan="5">
+    		<a href="joinForm">회원 등록하기</a>
+    	</td>
+    </tr>
+    </table>    
+</body>
+</html>

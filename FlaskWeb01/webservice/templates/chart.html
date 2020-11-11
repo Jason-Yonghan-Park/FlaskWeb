@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>		
+		<h2>
+			{% if  title == 'line' %}
+				다양한 색상과 선 스타일
+			{% elif title == 'scatter' %}
+				다양한 크기와 색상의 산점도
+			{% endif %}
+		</h2>	
+		<!-- 
+			url_for() 함수는 http://localhost:9000/fig/line 형식으로 
+			서버에 요청을 보내서 이미지 파일을 읽어온다.
+			main.py 모듈의 chartView에서 title에 저장한 값이 아래 chart 값으로
+			출력되고 /fig/line 형식으로 서버에 요청되어 main.py 모듈의 fig(chart)
+			함수가 호출되고 chart 인수에 title의 값이 전달된다.
+			그리고 fig(chart) 함수에서 반환하는 이미지 파일에 아래 위치에 출력된다. 
+		 -->		
+    	<img src="{{url_for('fig', chart=title)}}" alt="차트 이미지" 
+      				width={{width}}, height={{height}}>
+      </div>
+</body>
+</html>

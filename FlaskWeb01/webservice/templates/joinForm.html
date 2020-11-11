@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1 { text-align: center; }
+	 table {
+	 	border: 1px solid black;
+	 	border-collapse: collapse;
+	 	margin: 15px auto;
+	 }
+	 tr, th, td {
+	 	border: 1px solid black;
+	 }
+	 th, td {
+	 	width: 200px;
+	 }
+</style>
+</head>
+<body>
+<h1>회원 가입 폼</h1>
+<form name="memberJoinForm" action="addMember" method="post">
+	<table>
+		<tr>
+			<th>아이디 : </th>
+			<td><input type="text" name="id" /></td>
+		</tr>
+		<tr>
+			<th>이름 : </th>
+			<td><input type="text" name="name" /></td>
+		</tr>
+		<tr>
+			<th>비밀번호 : </th>
+			<td><input type="password" name="pw" /></td>
+		</tr>
+		<tr>
+			<th>이메일 : </th>
+			<td><input type="text" name="email" /></td>
+		</tr>
+		<tr>
+			<th>전화번호 : </th>
+			<td><input type="text" name="phone" /></td>
+		</tr>
+		<tr>
+			<th>주 소 : </th>
+			<td><input type="text" name="address1" /></td>
+		</tr>
+		<tr>			
+			<th><a href="/memberList">회원 리스트</a></th>
+			<td><input type="submit" value="가입하기" /></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

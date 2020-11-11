@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 테스트</title>
+</head>
+<body>
+	<h1>로그인 테스트</h1>
+	<!-- method의 값이 GET 이거나 None 이면 -->
+	{% if method == 'GET' or not method %}
+	<h3>GET 요청하기 폼</h3>
+	<form action="chat">
+		id : <input type="text" name="id" /><br/>
+		pass : <input type="password" name="pass" /><br/>
+		<input type="hidden" name="uId" value="mmm100" /><br/>
+		<input type="submit" value="대화하기 로그인" />	
+	</form>
+	<p>
+		<a href="/?method=POST" >POST 방식 폼 보기</a>
+	</p>	
+	{% elif method == 'POST' %}
+	<h3>POST 요청하기 폼</h3>
+	<form action="chat" method="post">
+		id : <input type="text" name="id" /><br/>
+		pass : <input type="password" name="pass" /><br/>
+		<input type="hidden" name="uId" value="mmm100" /><br/>
+		<input type="submit" value="대화하기 로그인" />	
+	</form>
+	{% endif %}
+	<div>
+		<h2>회원관리</h2>
+		<p>
+			<a href="memberList">회원 리스트</a>
+		</p>
+	</div>
+	<div>
+		<h2>ImageChart</h2>
+		<p>
+			<a href="sendFileChart?chart=line">라인차트 보기</a>&nbsp;&nbsp;
+			<a href="sendFileChart?chart=scatter">다양한 크기의 산점도 보기</a>
+		</p>		
+	</div>
+	<div>
+		<h2>ViewPageChart</h2>
+		<p>
+			<a href="chartView?chart=line">라인차트 보기</a>&nbsp;&nbsp;
+			<a href="chartView?chart=scatter">다양한 크기의 산점도 보기</a>
+		</p>		
+	</div>
+</body>
+</html>

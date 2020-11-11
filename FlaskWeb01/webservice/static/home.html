@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>채팅 테스트</title>
+</head>
+<body>
+	<h1>static/home.html - 채팅 테스트</h1>	
+	<h3>GET 요청</h3>
+	<form action="chat">
+		id : <input type="text" name="id" /><br/>
+		pass : <input type="password" name="pass" /><br/>
+		<input type="hidden" name="uId" value="mmm100" /><br/>
+		<input type="submit" value="대화하기 로그인" />	
+	</form>
+	<h3>POST 요청</h3>
+	<form action="chat" method="post">
+		id : <input type="text" name="id" /><br/>
+		pass : <input type="password" name="pass" /><br/>
+		<input type="hidden" name="uId" value="mmm100" /><br/>
+		<input type="submit" value="대화하기 로그인" />	
+	</form>		
+</body>
+</html>

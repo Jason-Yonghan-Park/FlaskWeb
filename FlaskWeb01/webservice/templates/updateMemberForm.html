@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1 { text-align: center; }
+	 table {
+	 	border: 1px solid black;
+	 	border-collapse: collapse;
+	 	margin: 15px auto;
+	 }
+	 tr, th, td {
+	 	border: 1px solid black;
+	 }
+	 th, td {
+	 	width: 200px;
+	 }
+</style>
+</head>
+<body>
+<h1>회원 정보 수정 폼</h1>
+<!-- 
+	updateMemberForm 페이지로 넘어 올 때 updateMemberForm/1 형태로 요청되어
+	넘어 왔기 때문에 아래 form 태그의 action 속성에 "updateMember"를 설정하게 되면
+	"updateMemberForm/updateMember" 형태로 폼이 전송되기 때문에
+	form의 action 속성을 설정할 때 주의가 필요하다.
+-->
+<form name="updateMemberForm" action="/updateMember" method="post">
+	<input type="hidden" name="no" value="{{ member.getNo() }}" /> 
+	<table>
+		<tr>
+			<th>아이디 : </th>
+			<td><input type="text" name="id" readonly value="{{ member.getId() }}"/></td>
+		</tr>
+		<tr>
+			<th>이름 : </th>
+			<td><input type="text" name="name" readonly value="{{ member.getName() }}"/></td>
+		</tr>
+		<tr>
+			<th>비밀번호 : </th>
+			<td><input type="password" name="pw" readonly value="{{ member.getPw() }}"/></td>
+		</tr>
+		<tr>
+			<th>이메일 : </th>
+			<td><input type="text" name="email" value="{{ member.getEmail() }}" /></td>
+		</tr>
+		<tr>
+			<th>전화번호 : </th>
+			<td><input type="text" name="phone" value="{{ member.getPhone() }}"/></td>
+		</tr>
+		<tr>
+			<th>주 소 : </th>
+			<td><input type="text" name="address1" value="{{ member.getAddress1() }}"/></td>
+		</tr>
+		<tr>			
+			<th><a href="/memberList">회원 리스트</a></th>
+			<td><input type="submit" value="수정하기" /></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
